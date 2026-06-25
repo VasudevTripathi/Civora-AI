@@ -1,0 +1,21 @@
+{
+  "uuid": "a1f8c148-52db-424a-89a3-5c8fe2200009",
+  "version": "1.0.0",
+  "last_updated": "2026-06-25T16:52:00Z",
+  "verification_status": "expert_verified",
+  "source": "https://gov.in/compliance-directory",
+  "applicable_state": "DL",
+  "applicable_district": "New Delhi",
+  "confidence": 0.95,
+  "tags": ["ecommerce", "online-retail", "digital-trade"],
+  "references": [],
+  "dependencies": [],
+  "business_category": "E-Commerce & Digital Services",
+  "business_type": "LLC",
+  "primary_activity_code": "NIC-47911",
+  "mandatory_license_uuids": [
+    "gst-registration-placeholder",
+    "iec-import-export-placeholder",
+    "bank-current-account-placeholder"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "uuid": "a1f8c148-52db-424a-89a3-5c8fe2200006",
+  "version": "1.0.0",
+  "last_updated": "2026-06-25T16:52:00Z",
+  "verification_status": "expert_verified",
+  "source": "https://gov.in/compliance-directory",
+  "applicable_state": "MH",
+  "applicable_district": "Pune",
+  "confidence": 0.94,
+  "tags": ["salon", "spa", "personal-care"],
+  "references": [],
+  "dependencies": [],
+  "business_category": "Personal Care Services",
+  "business_type": "Sole Proprietorship",
+  "primary_activity_code": "NIC-96020",
+  "mandatory_license_uuids": [
+    "trade-lic-uuid-placeholder",
+    "shop-est-lic-placeholder",
+    "water-disposal-noc-placeholder"
+  ]
+}

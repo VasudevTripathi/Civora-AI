@@ -1,0 +1,21 @@
+{
+  "uuid": "a1f8c148-52db-424a-89a3-5c8fe2200010",
+  "version": "1.0.0",
+  "last_updated": "2026-06-25T16:52:00Z",
+  "verification_status": "expert_verified",
+  "source": "https://gov.in/compliance-directory",
+  "applicable_state": "KA",
+  "applicable_district": "Bengaluru",
+  "confidence": 0.93,
+  "tags": ["travel", "tourism", "agency"],
+  "references": [],
+  "dependencies": [],
+  "business_category": "Travel & Tourism Services",
+  "business_type": "Sole Proprietorship",
+  "primary_activity_code": "NIC-79110",
+  "mandatory_license_uuids": [
+    "tourism-dept-reg-placeholder",
+    "gst-registration-placeholder",
+    "shop-est-lic-placeholder"
+  ]
+}

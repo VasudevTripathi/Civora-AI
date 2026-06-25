@@ -1,0 +1,21 @@
+{
+  "uuid": "a1f8c148-52db-424a-89a3-5c8fe2200002",
+  "version": "1.0.0",
+  "last_updated": "2026-06-25T16:52:00Z",
+  "verification_status": "expert_verified",
+  "source": "https://gov.in/compliance-directory",
+  "applicable_state": "MH",
+  "applicable_district": "Mumbai",
+  "confidence": 0.95,
+  "tags": ["dining", "food", "restaurant"],
+  "references": ["https://fssai.gov.in"],
+  "dependencies": [],
+  "business_category": "Food & Beverage",
+  "business_type": "Private Limited",
+  "primary_activity_code": "NIC-56101",
+  "mandatory_license_uuids": [
+    "fssai-state-lic-placeholder",
+    "liquor-lic-placeholder",
+    "shop-est-lic-placeholder"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "uuid": "a1f8c148-52db-424a-89a3-5c8fe2200004",
+  "version": "1.0.0",
+  "last_updated": "2026-06-25T16:52:00Z",
+  "verification_status": "expert_verified",
+  "source": "https://gov.in/compliance-directory",
+  "applicable_state": "DL",
+  "applicable_district": "Central Delhi",
+  "confidence": 0.90,
+  "tags": ["fitness", "gym", "wellness"],
+  "references": [],
+  "dependencies": [],
+  "business_category": "Fitness & Sports",
+  "business_type": "LLC",
+  "primary_activity_code": "NIC-93110",
+  "mandatory_license_uuids": [
+    "noc-fire-lic-placeholder",
+    "trade-mcd-lic-placeholder",
+    "police-clearance-placeholder"
+  ]
+}

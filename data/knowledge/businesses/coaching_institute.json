@@ -1,0 +1,21 @@
+{
+  "uuid": "a1f8c148-52db-424a-89a3-5c8fe2200005",
+  "version": "1.0.0",
+  "last_updated": "2026-06-25T16:52:00Z",
+  "verification_status": "expert_verified",
+  "source": "https://gov.in/compliance-directory",
+  "applicable_state": "UP",
+  "applicable_district": "Kota",
+  "confidence": 0.92,
+  "tags": ["education", "coaching", "classroom"],
+  "references": [],
+  "dependencies": [],
+  "business_category": "Education Services",
+  "business_type": "Partnership",
+  "primary_activity_code": "NIC-85491",
+  "mandatory_license_uuids": [
+    "noc-fire-lic-placeholder",
+    "muni-noc-lic-placeholder",
+    "shop-est-lic-placeholder"
+  ]
+}

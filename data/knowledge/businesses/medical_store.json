@@ -1,0 +1,21 @@
+{
+  "uuid": "a1f8c148-52db-424a-89a3-5c8fe2200003",
+  "version": "1.0.0",
+  "last_updated": "2026-06-25T16:52:00Z",
+  "verification_status": "expert_verified",
+  "source": "https://gov.in/compliance-directory",
+  "applicable_state": "KA",
+  "applicable_district": "Bengaluru",
+  "confidence": 0.98,
+  "tags": ["pharmacy", "medical", "retail"],
+  "references": ["https://cdsco.gov.in"],
+  "dependencies": [],
+  "business_category": "Healthcare & Pharmaceuticals",
+  "business_type": "Sole Proprietorship",
+  "primary_activity_code": "NIC-47721",
+  "mandatory_license_uuids": [
+    "drug-retail-lic-placeholder",
+    "pharmacist-reg-placeholder",
+    "shop-est-lic-placeholder"
+  ]
+}

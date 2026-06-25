@@ -1,0 +1,21 @@
+{
+  "uuid": "a1f8c148-52db-424a-89a3-5c8fe2200001",
+  "version": "1.0.0",
+  "last_updated": "2026-06-25T16:52:00Z",
+  "verification_status": "expert_verified",
+  "source": "https://gov.in/compliance-directory",
+  "applicable_state": "MH",
+  "applicable_district": "Mumbai",
+  "confidence": 0.95,
+  "tags": ["food", "hospitality", "cloud-kitchen"],
+  "references": ["https://fssai.gov.in"],
+  "dependencies": [],
+  "business_category": "Food & Beverage",
+  "business_type": "LLC",
+  "primary_activity_code": "NIC-56210",
+  "mandatory_license_uuids": [
+    "fssai-lic-uuid-placeholder",
+    "noc-fire-uuid-placeholder",
+    "trade-lic-uuid-placeholder"
+  ]
+}
