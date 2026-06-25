@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PolicyRuleSchema",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "description": { "type": "string" },
+    "condition": {
+      "type": "object",
+      "properties": {
+        "fact": { "type": "string" },
+        "operator": { "type": "string", "enum": ["equal", "notEqual", "greaterThan", "greaterThanOrEqual", "lessThan", "lessThanOrEqual", "in", "notIn", "contains"] },
+        "value": { "type": ["string", "number", "boolean", "array"] }
+      },
+      "required": ["fact", "operator", "value"]
+    },
+    "action": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["require_license", "exempt_license", "charge_fee", "set_timeline", "apply_penalty", "trigger_notification"] },
+        "params": {
+          "type": "object",
+          "properties": {
+            "license_uuid": { "type": "string", "format": "uuid" },
+            "fee_uuid": { "type": "string", "format": "uuid" },
+            "timeline_uuid": { "type": "string", "format": "uuid" },
+            "penalty_uuid": { "type": "string", "format": "uuid" },
+            "notification_uuid": { "type": "string", "format": "uuid" },
+            "value": { "type": ["string", "number", "boolean"] }
+          }
+        }
+      },
+      "required": ["type", "params"]
+    },
+    "priority": { "type": "integer", "minimum": 1, "maximum": 1000 },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fact": { "type": "string" },
+          "operator": { "type": "string" },
+          "value": { "type": ["string", "number", "boolean", "array"] }
+        },
+        "required": ["fact", "operator", "value"]
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "effective_date": { "type": "string", "format": "date" },
+    "expiry_date": { "type": ["string", "null"], "format": "date" },
+    "source": { "type": "string", "format": "uri" }
+  },
+  "required": [
+    "id",
+    "version",
+    "description",
+    "condition",
+    "action",
+    "priority",
+    "effective_date",
+    "source"
+  ]
+}

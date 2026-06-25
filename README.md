@@ -73,7 +73,21 @@ npm run dev
 * **Interactive API Documentation**: runs at [http://localhost:8000/docs](http://localhost:8000/docs) (Swagger UI)
 * **Frontend Application**: runs at [http://localhost:5173](http://localhost:5173) (or the port defined by Vite)
 
+### 3. Docker Deployment
+To build and run the backend using Docker:
+```bash
+docker-compose -f backend/docker-compose.yml up --build
+```
+
+### 4. Running Tests
+To execute the backend test suite:
+```bash
+cd backend
+pytest tests
+```
+
 ---
+
 
 ## 🛠️ Code Styling and Standards
 
