@@ -1,0 +1,30 @@
+{
+  "name": "civora-ai",
+  "version": "1.0.0",
+  "description": "Civora AI - Government Compliance Operating System",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && uvicorn app.main:app --reload --port 8000",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && python -m pip install -r requirements.txt",
+    "lint:js": "cd frontend && npm run lint",
+    "format:js": "cd frontend && npm run format",
+    "format:py": "black backend/app backend/tests",
+    "lint:py": "flake8 backend/app backend/tests && mypy backend/app"
+  },
+  "keywords": [
+    "compliance",
+    "operating-system",
+    "ai",
+    "legaltech",
+    "fastapi",
+    "react"
+  ],
+  "author": "Civora AI Team",
+  "license": "Proprietary",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
