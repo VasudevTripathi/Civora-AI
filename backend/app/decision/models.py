@@ -96,3 +96,34 @@ class EligibilityResult(BaseModel):
     missing_information: List[str] = Field(default_factory=list)
     next_steps: List[str] = Field(default_factory=list)
     summary: Dict[str, Any] = Field(default_factory=dict)
+
+
+class WorkflowStatus(str, Enum):
+    NOT_STARTED = "NOT_STARTED"
+    AVAILABLE = "AVAILABLE"
+    BLOCKED = "BLOCKED"
+    IN_PROGRESS = "IN_PROGRESS"
+    COMPLETED = "COMPLETED"
+
+
+class WorkflowStep(BaseModel):
+    step_id: str
+    rule_id: str
+    title: str
+    description: str
+    status: WorkflowStatus
+    authority: str
+    priority: int
+    dependencies: List[str] = Field(default_factory=list)
+    required_documents: List[str] = Field(default_factory=list)
+    estimated_duration: Optional[str] = None
+    blocking_reason: Optional[str] = None
+
+
+class WorkflowResult(BaseModel):
+    steps: Dict[str, WorkflowStep] = Field(default_factory=dict)
+    execution_order: List[str] = Field(default_factory=list)
+    critical_path: List[str] = Field(default_factory=list)
+    blocked_steps: List[str] = Field(default_factory=list)
+    completion_percentage: float = 0.0
+    summary: Dict[str, Any] = Field(default_factory=dict)
