@@ -56,3 +56,43 @@ class EvaluationResult(BaseModel):
     profile: BusinessProfile
     evaluations: List[ConditionEvaluation] = Field(default_factory=list)
     summary: Dict[str, int] = Field(default_factory=dict)
+
+
+class DependencyNode(BaseModel):
+    rule_id: str
+    title: str
+    parents: List[str] = Field(default_factory=list)
+    children: List[str] = Field(default_factory=list)
+    depth: int = 0
+    status: Optional[str] = None
+
+
+class DependencyGraph(BaseModel):
+    nodes: Dict[str, DependencyNode] = Field(default_factory=dict)
+    roots: List[str] = Field(default_factory=list)
+    leaf_nodes: List[str] = Field(default_factory=list)
+    execution_order: List[str] = Field(default_factory=list)
+    cycles_detected: bool = False
+
+
+class EligibilityStatus(str, Enum):
+    ELIGIBLE = "ELIGIBLE"
+    CONDITIONALLY_ELIGIBLE = "CONDITIONALLY_ELIGIBLE"
+    NOT_ELIGIBLE = "NOT_ELIGIBLE"
+
+
+class EligibilityIssue(BaseModel):
+    rule_id: str
+    severity: str  # ERROR, WARNING, INFO
+    message: str
+    blocking: bool
+    recommended_action: str
+
+
+class EligibilityResult(BaseModel):
+    status: EligibilityStatus
+    issues: List[EligibilityIssue] = Field(default_factory=list)
+    blocking_rules: List[str] = Field(default_factory=list)
+    missing_information: List[str] = Field(default_factory=list)
+    next_steps: List[str] = Field(default_factory=list)
+    summary: Dict[str, Any] = Field(default_factory=dict)
