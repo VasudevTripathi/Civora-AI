@@ -5,15 +5,59 @@
   "properties": {
     "id": { "type": "string", "format": "uuid" },
     "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "title": { "type": "string" },
     "description": { "type": "string" },
+    "category": { "type": "string" },
+    "authority": { "type": "string" },
     "condition": {
       "type": "object",
-      "properties": {
-        "fact": { "type": "string" },
-        "operator": { "type": "string", "enum": ["equal", "notEqual", "greaterThan", "greaterThanOrEqual", "lessThan", "lessThanOrEqual", "in", "notIn", "contains"] },
-        "value": { "type": ["string", "number", "boolean", "array"] }
-      },
-      "required": ["fact", "operator", "value"]
+      "anyOf": [
+        {
+          "properties": {
+            "fact": { "type": "string" },
+            "operator": { "type": "string", "enum": [
+              "equal", "equals",
+              "notEqual", "not_equals", "notEquals",
+              "greaterThan", "greater_than",
+              "greaterThanOrEqual", "greater_than_or_equal",
+              "lessThan", "less_than",
+              "lessThanOrEqual", "less_than_or_equal",
+              "in",
+              "notIn", "not_in",
+              "contains",
+              "exists"
+            ] },
+            "value": { "type": ["string", "number", "boolean", "array"] }
+          },
+          "required": ["fact", "operator", "value"]
+        },
+        {
+          "properties": {
+            "all": {
+              "type": "array",
+              "items": { "$ref": "#/properties/condition" }
+            }
+          },
+          "required": ["all"]
+        },
+        {
+          "properties": {
+            "any": {
+              "type": "array",
+              "items": { "$ref": "#/properties/condition" }
+            }
+          },
+          "required": ["any"]
+        },
+        {
+          "properties": {
+            "not": {
+              "$ref": "#/properties/condition"
+            }
+          },
+          "required": ["not"]
+        }
+      ]
     },
     "action": {
       "type": "object",
