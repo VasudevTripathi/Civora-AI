@@ -1,0 +1,31 @@
+{
+  "id": "8e8d89e5-9c88-469b-8e1d-384a28bb0004",
+  "uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0004",
+  "type": "authority",
+  "jurisdiction": "State",
+  "authority": "Delaware Division of Revenue",
+  "title": "Delaware Division of Revenue",
+  "description": "Responsible for the administration and collection of Delaware state business taxes and licenses.",
+  "effective_date": "2026-01-01",
+  "version": "1.0.0",
+  "source": "https://revenue.delaware.gov",
+  "tags": [
+    "delaware",
+    "revenue",
+    "taxes",
+    "authority"
+  ],
+  "metadata": {},
+  "last_updated": "2026-07-08T15:00:00Z",
+  "verification_status": "expert_verified",
+  "applicable_state": "DE",
+  "applicable_district": null,
+  "confidence": 1.0,
+  "references": [
+    "https://revenue.delaware.gov"
+  ],
+  "dependencies": [],
+  "authority_name": "Delaware Division of Revenue",
+  "ministry_or_department": "Delaware Department of Finance",
+  "official_website": "https://revenue.delaware.gov"
+}

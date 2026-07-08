@@ -1,0 +1,29 @@
+{
+  "id": "8e8d89e5-9c88-469b-8e1d-384a28bb0099",
+  "uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0099",
+  "type": "act",
+  "jurisdiction": "DE",
+  "authority": "Delaware Division of Corporations",
+  "title": "Delaware Limited Liability Company Act",
+  "description": "The main governing act for Delaware LLCs.",
+  "effective_date": "2026-01-01",
+  "version": "1.0.0",
+  "source": "https://corp.delaware.gov",
+  "tags": [
+    "act",
+    "llc"
+  ],
+  "metadata": {},
+  "last_updated": "2026-07-08T15:00:00Z",
+  "verification_status": "expert_verified",
+  "applicable_state": "DE",
+  "applicable_district": null,
+  "confidence": 1.0,
+  "references": [
+    "https://corp.delaware.gov"
+  ],
+  "dependencies": [],
+  "act_name": "Delaware Limited Liability Company Act",
+  "citation": "Del. Code tit. 6, ch. 18",
+  "year_enacted": 1992
+}

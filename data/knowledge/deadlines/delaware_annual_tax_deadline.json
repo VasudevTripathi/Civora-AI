@@ -1,0 +1,30 @@
+{
+  "id": "8e8d89e5-9c88-469b-8e1d-384a28bb0019",
+  "uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0019",
+  "type": "renewal",
+  "jurisdiction": "DE",
+  "authority": "Delaware Division of Revenue",
+  "title": "Delaware LLC Annual Franchise Tax Deadline",
+  "description": "Annual Franchise Tax must be filed and paid on or before June 1st of each year.",
+  "effective_date": "2026-01-01",
+  "version": "1.0.0",
+  "source": "https://corp.delaware.gov/frtax.shtml",
+  "tags": [
+    "tax",
+    "annual",
+    "deadline"
+  ],
+  "metadata": {},
+  "last_updated": "2026-07-08T15:00:00Z",
+  "verification_status": "expert_verified",
+  "applicable_state": "DE",
+  "applicable_district": null,
+  "confidence": 1.0,
+  "references": [
+    "https://corp.delaware.gov/frtax.shtml"
+  ],
+  "dependencies": [],
+  "recurrence_months": 12,
+  "grace_period_days": 30,
+  "required_documents_for_renewal": []
+}

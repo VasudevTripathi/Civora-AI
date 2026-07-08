@@ -1,0 +1,38 @@
+{
+  "id": "8e8d89e5-9c88-469b-8e1d-384a28bb0006",
+  "uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0006",
+  "type": "license",
+  "jurisdiction": "DE",
+  "authority": "Delaware Division of Revenue",
+  "title": "Delaware General Business License",
+  "description": "Annual state business license required for conducting business activities in Delaware.",
+  "effective_date": "2026-01-01",
+  "version": "1.0.0",
+  "source": "https://revenue.delaware.gov",
+  "tags": [
+    "license",
+    "tax",
+    "annual"
+  ],
+  "metadata": {},
+  "last_updated": "2026-07-08T15:00:00Z",
+  "verification_status": "expert_verified",
+  "applicable_state": "DE",
+  "applicable_district": null,
+  "confidence": 1.0,
+  "references": [
+    "https://revenue.delaware.gov"
+  ],
+  "dependencies": [
+    "8e8d89e5-9c88-469b-8e1d-384a28bb0005"
+  ],
+  "license_name": "Delaware General Business License",
+  "authority_uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0004",
+  "governing_rule_uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0021",
+  "required_document_uuids": [],
+  "fee_uuids": [
+    "8e8d89e5-9c88-469b-8e1d-384a28bb0013"
+  ],
+  "timeline_uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0011",
+  "renewal_uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0019"
+}

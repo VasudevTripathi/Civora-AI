@@ -1,0 +1,31 @@
+{
+  "id": "8e8d89e5-9c88-469b-8e1d-384a28bb0012",
+  "uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0012",
+  "type": "fee",
+  "jurisdiction": "DE",
+  "authority": "Delaware Division of Corporations",
+  "title": "Certificate of Formation Filing Fee",
+  "description": "State filing fee for submitting the Delaware Certificate of Formation.",
+  "effective_date": "2026-01-01",
+  "version": "1.0.0",
+  "source": "https://corp.delaware.gov",
+  "tags": [
+    "fee",
+    "formation",
+    "filing"
+  ],
+  "metadata": {},
+  "last_updated": "2026-07-08T15:00:00Z",
+  "verification_status": "expert_verified",
+  "applicable_state": "DE",
+  "applicable_district": null,
+  "confidence": 1.0,
+  "references": [
+    "https://corp.delaware.gov"
+  ],
+  "dependencies": [],
+  "fee_amount": 90.0,
+  "currency_code": "USD",
+  "payment_mode": "Online",
+  "recipient_department": "Delaware Division of Corporations"
+}

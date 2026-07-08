@@ -1,0 +1,22 @@
+[
+  {
+    "from_id": "8e8d89e5-9c88-469b-8e1d-384a28bb0001",
+    "to_id": "8e8d89e5-9c88-469b-8e1d-384a28bb0005",
+    "relationship": "requires"
+  },
+  {
+    "from_id": "8e8d89e5-9c88-469b-8e1d-384a28bb0001",
+    "to_id": "8e8d89e5-9c88-469b-8e1d-384a28bb0006",
+    "relationship": "requires"
+  },
+  {
+    "from_id": "8e8d89e5-9c88-469b-8e1d-384a28bb0005",
+    "to_id": "8e8d89e5-9c88-469b-8e1d-384a28bb0002",
+    "relationship": "governed_by"
+  },
+  {
+    "from_id": "8e8d89e5-9c88-469b-8e1d-384a28bb0006",
+    "to_id": "8e8d89e5-9c88-469b-8e1d-384a28bb0004",
+    "relationship": "governed_by"
+  }
+]

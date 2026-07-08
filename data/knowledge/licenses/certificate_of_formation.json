@@ -1,0 +1,39 @@
+{
+  "id": "8e8d89e5-9c88-469b-8e1d-384a28bb0005",
+  "uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0005",
+  "type": "license",
+  "jurisdiction": "DE",
+  "authority": "Delaware Division of Corporations",
+  "title": "Delaware Certificate of Formation",
+  "description": "The founding document filed with the Division of Corporations to legally establish a Delaware LLC.",
+  "effective_date": "2026-01-01",
+  "version": "1.0.0",
+  "source": "https://corp.delaware.gov",
+  "tags": [
+    "formation",
+    "llc",
+    "filing"
+  ],
+  "metadata": {},
+  "last_updated": "2026-07-08T15:00:00Z",
+  "verification_status": "expert_verified",
+  "applicable_state": "DE",
+  "applicable_district": null,
+  "confidence": 1.0,
+  "references": [
+    "https://corp.delaware.gov"
+  ],
+  "dependencies": [],
+  "license_name": "Delaware Certificate of Formation",
+  "authority_uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0002",
+  "governing_rule_uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0020",
+  "required_document_uuids": [
+    "8e8d89e5-9c88-469b-8e1d-384a28bb0015",
+    "8e8d89e5-9c88-469b-8e1d-384a28bb0016"
+  ],
+  "fee_uuids": [
+    "8e8d89e5-9c88-469b-8e1d-384a28bb0012"
+  ],
+  "timeline_uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0010",
+  "renewal_uuid": null
+}

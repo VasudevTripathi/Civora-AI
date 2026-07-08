@@ -1,0 +1,30 @@
+{
+  "id": "8e8d89e5-9c88-469b-8e1d-384a28bb0011",
+  "uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0011",
+  "type": "timeline",
+  "jurisdiction": "DE",
+  "authority": "Delaware Division of Revenue",
+  "title": "General Business License SLA",
+  "description": "SLA for Delaware General Business License processing.",
+  "effective_date": "2026-01-01",
+  "version": "1.0.0",
+  "source": "https://revenue.delaware.gov",
+  "tags": [
+    "sla",
+    "timeline",
+    "license"
+  ],
+  "metadata": {},
+  "last_updated": "2026-07-08T15:00:00Z",
+  "verification_status": "expert_verified",
+  "applicable_state": "DE",
+  "applicable_district": null,
+  "confidence": 1.0,
+  "references": [
+    "https://revenue.delaware.gov"
+  ],
+  "dependencies": [],
+  "processing_duration_days": 10,
+  "sla_type": "Estimated",
+  "milestone_description": "Issuance of Delaware General Business License upon payment of tax."
+}

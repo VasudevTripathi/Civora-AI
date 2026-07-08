@@ -1,0 +1,34 @@
+{
+  "id": "8e8d89e5-9c88-469b-8e1d-384a28bb0001",
+  "uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0001",
+  "type": "business",
+  "jurisdiction": "DE",
+  "authority": "Delaware Division of Corporations",
+  "title": "Delaware LLC General Business Formation",
+  "description": "Standard business profile for forming a Limited Liability Company in the State of Delaware.",
+  "effective_date": "2026-01-01",
+  "version": "1.0.0",
+  "source": "https://corp.delaware.gov",
+  "tags": [
+    "llc",
+    "delaware",
+    "formation"
+  ],
+  "metadata": {},
+  "last_updated": "2026-07-08T15:00:00Z",
+  "verification_status": "expert_verified",
+  "applicable_state": "DE",
+  "applicable_district": null,
+  "confidence": 1.0,
+  "references": [
+    "https://corp.delaware.gov"
+  ],
+  "dependencies": [],
+  "business_category": "General Business",
+  "business_type": "LLC",
+  "primary_activity_code": "NIC-LLC",
+  "mandatory_license_uuids": [
+    "8e8d89e5-9c88-469b-8e1d-384a28bb0005",
+    "8e8d89e5-9c88-469b-8e1d-384a28bb0006"
+  ]
+}
