@@ -20,19 +20,29 @@ class ComplianceEngine:
     ComplianceEngine acts as a Facade over the Civora decision-layer engines.
     It coordinates the end-to-end compliance evaluation pipeline.
     """
-    def __init__(self, knowledge_dir: Optional[str] = None):
+    def __init__(
+        self,
+        knowledge_dir: Optional[str] = None,
+        policy_loader: Optional[PolicyLoader] = None,
+        knowledge_loader: Optional[KnowledgeLoader] = None,
+        rule_engine: Optional[RuleEngine] = None,
+        evaluator: Optional[ConditionEvaluator] = None,
+        resolver: Optional[DependencyResolver] = None,
+        eligibility_engine: Optional[EligibilityEngine] = None,
+        workflow_engine: Optional[WorkflowEngine] = None,
+    ):
         self.knowledge_dir = knowledge_dir
         
         # Loaders
-        self.policy_loader = PolicyLoader(knowledge_dir=self.knowledge_dir)
-        self.knowledge_loader = KnowledgeLoader(knowledge_dir=self.knowledge_dir)
+        self.policy_loader = policy_loader or PolicyLoader(knowledge_dir=self.knowledge_dir)
+        self.knowledge_loader = knowledge_loader or KnowledgeLoader(knowledge_dir=self.knowledge_dir)
         
         # Decoupled Engines
-        self.rule_engine = RuleEngine(policy_loader=self.policy_loader)
-        self.evaluator = ConditionEvaluator(policy_loader=self.policy_loader)
-        self.resolver = DependencyResolver()
-        self.eligibility_engine = EligibilityEngine(policy_loader=self.policy_loader)
-        self.workflow_engine = WorkflowEngine(
+        self.rule_engine = rule_engine or RuleEngine(policy_loader=self.policy_loader)
+        self.evaluator = evaluator or ConditionEvaluator(policy_loader=self.policy_loader)
+        self.resolver = resolver or DependencyResolver()
+        self.eligibility_engine = eligibility_engine or EligibilityEngine(policy_loader=self.policy_loader)
+        self.workflow_engine = workflow_engine or WorkflowEngine(
             policy_loader=self.policy_loader,
             knowledge_loader=self.knowledge_loader
         )
