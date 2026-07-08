@@ -1,17 +1,17 @@
 {
-  "id": "8e8d89e5-9c88-469b-8e1d-384a28bb0020",
-  "uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0020",
+  "id": "8e8d89e5-9c88-469b-8e1d-384a28bb0021",
+  "uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0021",
   "type": "rule",
   "jurisdiction": "DE",
-  "authority": "Delaware Division of Corporations",
-  "title": "Delaware LLC Formation Rule",
-  "description": "Every Delaware LLC must file a Certificate of Formation to legally operate.",
+  "authority": "Delaware Division of Revenue",
+  "title": "Delaware General Business License Rule",
+  "description": "Every Delaware LLC must obtain an annual General Business License.",
   "effective_date": "2026-01-01",
   "version": "1.0.0",
-  "source": "https://corp.delaware.gov",
+  "source": "https://revenue.delaware.gov",
   "tags": [
     "rule",
-    "formation"
+    "license"
   ],
   "metadata": {},
   "last_updated": "2026-07-08T15:00:00Z",
@@ -20,12 +20,14 @@
   "applicable_district": null,
   "confidence": 1.0,
   "references": [
-    "https://corp.delaware.gov"
+    "https://revenue.delaware.gov"
   ],
-  "dependencies": [],
+  "dependencies": [
+    "8e8d89e5-9c88-469b-8e1d-384a28bb0020"
+  ],
   "legal_act_uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0099",
-  "section_reference": "Del. Code tit. 6, § 18-201",
-  "rule_description": "A limited liability company is formed by filing a Certificate of Formation.",
+  "section_reference": "Del. Code tit. 30, § 2101",
+  "rule_description": "Requires every person engaged in a business in this State to obtain a license.",
   "condition": {
     "all": [
       {
@@ -43,8 +45,8 @@
   "action": {
     "type": "require_license",
     "params": {
-      "license_uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0005"
+      "license_uuid": "8e8d89e5-9c88-469b-8e1d-384a28bb0006"
     }
   },
-  "priority": 100
+  "priority": 90
 }
