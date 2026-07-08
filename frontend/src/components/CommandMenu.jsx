@@ -15,6 +15,7 @@ export default function CommandMenu({ isOpen, onClose, onViewChange }) {
     { label: 'Go to Dashboard', icon: '📊', view: 'dashboard' },
     { label: 'Start Business Registration Wizard', icon: '📝', view: 'wizard' },
     { label: 'Consult AI Advisory Chatbot', icon: '💬', view: 'chat' },
+    { label: 'Browse Canonical Knowledge Base', icon: '📚', view: 'knowledge' },
     { label: 'View Compliance Deadlines Calendar', icon: '📅', view: 'calendar' },
     { label: 'Access Generated Documents Vault', icon: '📁', view: 'documents' }
   ];

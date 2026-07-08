@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
+import { generateCompliancePlan } from '../api/compliance';
 
-export default function WizardView({ entityProgress, onProgressUpdate, onViewChange }) {
+export default function WizardView({
+  entityProgress,
+  onProgressUpdate,
+  onViewChange,
+  compliancePlan,
+  setCompliancePlan
+}) {
   const [step, setStep] = useState(entityProgress === 100 ? 4 : entityProgress === 50 ? 2 : 1);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     businessName: '',
     entityType: 'LLC',
@@ -15,6 +24,43 @@ export default function WizardView({ entityProgress, onProgressUpdate, onViewCha
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const generatePlan = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const stateMapping = {
+        'Delaware': 'DE',
+        'Wyoming': 'WY',
+        'Texas': 'TX'
+      };
+
+      const payload = {
+        business_type: formData.entityType,
+        state: stateMapping[formData.state] || formData.state,
+        industry: 'General Business',
+        employees: 5,
+        annual_revenue: 200000.0,
+        ownership_type: formData.entityType,
+        is_foreign_owner: false,
+        is_home_based: false,
+        additional_attributes: {
+          businessName: formData.businessName,
+          shareCount: formData.shareCount,
+          founderEmail: formData.founderEmail
+        }
+      };
+
+      const plan = await generateCompliancePlan(payload);
+      setCompliancePlan(plan);
+      setStep(4);
+      onProgressUpdate(100);
+    } catch (err) {
+      setError(err?.message || 'An error occurred while calling the Compliance Engine.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleNext = () => {
     if (step === 1) {
       setStep(2);
@@ -23,8 +69,7 @@ export default function WizardView({ entityProgress, onProgressUpdate, onViewCha
       setStep(3);
       onProgressUpdate(50);
     } else if (step === 3) {
-      setStep(4);
-      onProgressUpdate(100);
+      generatePlan();
     }
   };
 
@@ -35,6 +80,50 @@ export default function WizardView({ entityProgress, onProgressUpdate, onViewCha
   };
 
   const renderStep = () => {
+    if (loading) {
+      return (
+        <div style={{ textAlign: 'center', padding: '48px 0' }}>
+          <div className="spinner" style={{
+            width: '40px',
+            height: '40px',
+            border: '4px solid var(--border-color)',
+            borderTop: '4px solid var(--accent-blue)',
+            borderRadius: '50%',
+            animation: 'spin 1s linear infinite',
+            margin: '0 auto 16px auto'
+          }} />
+          <h3 style={{ fontWeight: 500 }}>Generating Compliance Plan...</h3>
+          <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px' }}>
+            Consulting Rule engines and constructing topological workflow paths.
+          </p>
+          <style>{`
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+          `}</style>
+        </div>
+      );
+    }
+
+    if (error) {
+      return (
+        <div style={{ textAlign: 'center', padding: '24px 0' }}>
+          <span style={{ fontSize: '36px', display: 'block', marginBottom: '8px' }}>⚠️</span>
+          <h3 style={{ marginBottom: '8px', fontWeight: 600, color: '#ef4444' }}>Generation Failed</h3>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '20px' }}>{error}</p>
+          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+            <button onClick={() => setError(null)} className="btn">
+              Go Back
+            </button>
+            <button onClick={generatePlan} className="btn btn-primary">
+              Retry Generation
+            </button>
+          </div>
+        </div>
+      );
+    }
+
     switch (step) {
       case 1:
         return (
@@ -131,18 +220,50 @@ export default function WizardView({ entityProgress, onProgressUpdate, onViewCha
         );
       case 4:
         return (
-          <div style={{ textAlign: 'center', padding: '32px 0' }}>
-            <span style={{ fontSize: '48px' }}>🎉</span>
-            <h2 style={{ margin: '16px 0 8px 0' }}>Filing Prepared Successfully!</h2>
-            <p style={{ maxWidth: '400px', margin: '0 auto 24px auto' }}>
-              Your entity paperwork has been synthesized. You can now download the ready-to-file documents from the Documents Vault.
-            </p>
-            <button
-              onClick={() => onViewChange('documents')}
-              className="btn btn-primary"
-            >
-              Go to Documents Vault
-            </button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <div style={{ textAlign: 'center', padding: '16px 0' }}>
+              <span style={{ fontSize: '48px' }}>🎉</span>
+              <h2 style={{ margin: '16px 0 8px 0' }}>Filing Prepared Successfully!</h2>
+              <p style={{ maxWidth: '400px', margin: '0 auto' }}>
+                Your compliance plan and registration workflow have been synthesized.
+              </p>
+            </div>
+
+            {compliancePlan && (
+              <div style={{
+                backgroundColor: 'var(--bg-app)',
+                border: '1px solid var(--border-color)',
+                borderRadius: 'var(--radius-sm)',
+                padding: '16px',
+                textAlign: 'left'
+              }}>
+                <h3 style={{ fontSize: '13px', fontWeight: '600', marginBottom: '12px', borderBottom: '1px solid var(--border-color)', paddingBottom: '6px' }}>
+                  SYNTHESIZED PLAN SUMMARY
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '12px' }}>
+                  <div><strong>Company Name:</strong> {formData.businessName || 'Civora LLC'}</div>
+                  <div><strong>Jurisdiction:</strong> {formData.state} (State code: {compliancePlan.profile.state})</div>
+                  <div><strong>Entity Type:</strong> {formData.entityType}</div>
+                  <div><strong>Standing Status:</strong> <span className="badge badge-success">{compliancePlan.eligibility_result.status}</span></div>
+                  <div><strong>Generated Steps:</strong> {Object.keys(compliancePlan.workflow_result.steps).length} tasks matched</div>
+                </div>
+              </div>
+            )}
+
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+              <button
+                onClick={() => onViewChange('dashboard')}
+                className="btn"
+              >
+                Go to Dashboard
+              </button>
+              <button
+                onClick={() => onViewChange('documents')}
+                className="btn btn-primary"
+              >
+                Go to Documents Hub
+              </button>
+            </div>
           </div>
         );
       default:
@@ -168,7 +289,7 @@ export default function WizardView({ entityProgress, onProgressUpdate, onViewCha
         marginBottom: '24px'
       }}>
         {/* Step Indicator Header */}
-        {step < 4 && (
+        {step < 4 && !loading && !error && (
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -186,7 +307,7 @@ export default function WizardView({ entityProgress, onProgressUpdate, onViewCha
         {renderStep()}
 
         {/* Action button bar */}
-        {step < 4 && (
+        {step < 4 && !loading && !error && (
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',

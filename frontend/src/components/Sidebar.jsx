@@ -5,6 +5,7 @@ export default function Sidebar({ activeView, onViewChange, entityProgress }) {
     { id: 'dashboard', label: 'Dashboard', icon: '📊' },
     { id: 'wizard', label: 'Registration Wizard', icon: '📝', badge: entityProgress < 100 ? `${entityProgress}%` : null },
     { id: 'chat', label: 'AI Advisory Chat', icon: '💬' },
+    { id: 'knowledge', label: 'Knowledge Base', icon: '📚' },
     { id: 'calendar', label: 'Compliance Calendar', icon: '📅' },
     { id: 'documents', label: 'Documents Hub', icon: '📁' }
   ];

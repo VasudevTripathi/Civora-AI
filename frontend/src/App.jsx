@@ -7,12 +7,14 @@ import WizardView from './components/WizardView';
 import ChatView from './components/ChatView';
 import CalendarView from './components/CalendarView';
 import DocumentsView from './components/DocumentsView';
+import KnowledgeView from './components/KnowledgeView';
 import './index.css';
 
 export default function App() {
   const [activeView, setActiveView] = useState('dashboard');
   const [entityProgress, setEntityProgress] = useState(0); // 0% (unregistered) -> 100% (incorporated)
   const [isCommandOpen, setIsCommandOpen] = useState(false);
+  const [compliancePlan, setCompliancePlan] = useState(null);
 
   // Listen for Cmd+K / Ctrl+K keyboard shortcut (Linear style)
   useEffect(() => {
@@ -32,23 +34,39 @@ export default function App() {
   const renderActiveView = () => {
     switch (activeView) {
       case 'dashboard':
-        return <DashboardView entityProgress={entityProgress} onViewChange={setActiveView} />;
+        return (
+          <DashboardView
+            entityProgress={entityProgress}
+            onViewChange={setActiveView}
+            compliancePlan={compliancePlan}
+          />
+        );
       case 'wizard':
         return (
           <WizardView
             entityProgress={entityProgress}
             onProgressUpdate={setEntityProgress}
             onViewChange={setActiveView}
+            compliancePlan={compliancePlan}
+            setCompliancePlan={setCompliancePlan}
           />
         );
       case 'chat':
         return <ChatView />;
       case 'calendar':
-        return <CalendarView />;
+        return <CalendarView compliancePlan={compliancePlan} />;
       case 'documents':
-        return <DocumentsView entityProgress={entityProgress} />;
+        return <DocumentsView entityProgress={entityProgress} compliancePlan={compliancePlan} />;
+      case 'knowledge':
+        return <KnowledgeView />;
       default:
-        return <DashboardView entityProgress={entityProgress} onViewChange={setActiveView} />;
+        return (
+          <DashboardView
+            entityProgress={entityProgress}
+            onViewChange={setActiveView}
+            compliancePlan={compliancePlan}
+          />
+        );
     }
   };
 

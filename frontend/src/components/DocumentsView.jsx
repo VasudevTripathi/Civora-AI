@@ -1,12 +1,48 @@
 import React from 'react';
 
-export default function DocumentsView({ entityProgress }) {
-  const documents = [
-    { name: 'Articles of Organization (Filing draft)', state: 'Delaware / Wyoming', format: 'PDF', size: '240 KB', status: entityProgress >= 50 ? 'Generated' : 'Pending Wizard' },
-    { name: 'IRS SS-4 Form (EIN application)', state: 'Federal (IRS)', format: 'PDF', size: '180 KB', status: entityProgress === 100 ? 'Generated' : 'Pending Wizard' },
-    { name: 'Corporate Operating Agreement (Draft)', state: 'Delaware / Wyoming', format: 'DOCX', size: '1.2 MB', status: entityProgress === 100 ? 'Generated' : 'Pending Wizard' },
-    { name: 'Registered Agent Consent Form', state: 'Delaware / Wyoming', format: 'PDF', size: '94 KB', status: entityProgress >= 50 ? 'Generated' : 'Pending Wizard' }
-  ];
+export default function DocumentsView({ entityProgress, compliancePlan }) {
+  const hasPlan = !!compliancePlan;
+
+  // Compile list of documents dynamically
+  const documents = hasPlan
+    ? Object.values(compliancePlan.workflow_result.steps).reduce((acc, step) => {
+        const stepDocs = step.required_documents || [];
+        stepDocs.forEach(docName => {
+          // Check if we already added this document
+          if (acc.some(d => d.name === docName)) return;
+
+          let format = 'PDF';
+          let size = '180 KB';
+          if (docName.toLowerCase().includes('agreement') || docName.toLowerCase().includes('docx')) {
+            format = 'DOCX';
+            size = '1.2 MB';
+          } else if (docName.toLowerCase().includes('consent') || docName.toLowerCase().includes('agent')) {
+            size = '94 KB';
+          } else if (docName.toLowerCase().includes('formation') || docName.toLowerCase().includes('organization')) {
+            size = '240 KB';
+          }
+
+          let status = 'Pending Wizard';
+          if (step.status === 'COMPLETED' || step.status === 'AVAILABLE') {
+            status = 'Generated';
+          }
+
+          acc.push({
+            name: docName,
+            state: compliancePlan.profile.state,
+            format,
+            size,
+            status
+          });
+        });
+        return acc;
+      }, [])
+    : [
+        { name: 'Articles of Organization (Filing draft)', state: 'Delaware / Wyoming', format: 'PDF', size: '240 KB', status: entityProgress >= 50 ? 'Generated' : 'Pending Wizard' },
+        { name: 'IRS SS-4 Form (EIN application)', state: 'Federal (IRS)', format: 'PDF', size: '180 KB', status: entityProgress === 100 ? 'Generated' : 'Pending Wizard' },
+        { name: 'Corporate Operating Agreement (Draft)', state: 'Delaware / Wyoming', format: 'DOCX', size: '1.2 MB', status: entityProgress === 100 ? 'Generated' : 'Pending Wizard' },
+        { name: 'Registered Agent Consent Form', state: 'Delaware / Wyoming', format: 'PDF', size: '94 KB', status: entityProgress >= 50 ? 'Generated' : 'Pending Wizard' }
+      ];
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
@@ -40,38 +76,46 @@ export default function DocumentsView({ entityProgress }) {
             </tr>
           </thead>
           <tbody>
-            {documents.map((doc, idx) => (
-              <tr key={idx}>
-                <td style={{ fontWeight: '600', color: 'var(--text-primary)' }}>
-                  📄 {doc.name}
-                </td>
-                <td>{doc.state}</td>
-                <td style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-muted)' }}>{doc.format}</td>
-                <td>{doc.size}</td>
-                <td>
-                  <span className={`badge ${doc.status === 'Generated' ? 'badge-success' : 'badge-warning'}`}>
-                    {doc.status}
-                  </span>
-                </td>
-                <td>
-                  <button
-                    disabled={doc.status !== 'Generated'}
-                    style={{
-                      border: 'none',
-                      background: 'none',
-                      color: doc.status === 'Generated' ? 'var(--accent-blue)' : 'var(--text-muted)',
-                      cursor: doc.status === 'Generated' ? 'pointer' : 'not-allowed',
-                      fontSize: '12px',
-                      fontWeight: '500',
-                      padding: 0
-                    }}
-                    onClick={() => doc.status === 'Generated' && alert(`Downloading ${doc.name}...`)}
-                  >
-                    Download ↓
-                  </button>
+            {documents.length === 0 ? (
+              <tr>
+                <td colSpan={6} style={{ textAlign: 'center', padding: '24px', color: 'var(--text-muted)' }}>
+                  No documents required for this business profile.
                 </td>
               </tr>
-            ))}
+            ) : (
+              documents.map((doc, idx) => (
+                <tr key={idx}>
+                  <td style={{ fontWeight: '600', color: 'var(--text-primary)' }}>
+                    📄 {doc.name}
+                  </td>
+                  <td>{doc.state}</td>
+                  <td style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-muted)' }}>{doc.format}</td>
+                  <td>{doc.size}</td>
+                  <td>
+                    <span className={`badge ${doc.status === 'Generated' ? 'badge-success' : 'badge-warning'}`}>
+                      {doc.status}
+                    </span>
+                  </td>
+                  <td>
+                    <button
+                      disabled={doc.status !== 'Generated'}
+                      style={{
+                        border: 'none',
+                        background: 'none',
+                        color: doc.status === 'Generated' ? 'var(--accent-blue)' : 'var(--text-muted)',
+                        cursor: doc.status === 'Generated' ? 'pointer' : 'not-allowed',
+                        fontSize: '12px',
+                        fontWeight: '500',
+                        padding: 0
+                      }}
+                      onClick={() => doc.status === 'Generated' && alert(`Downloading ${doc.name}...`)}
+                    >
+                      Download ↓
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
