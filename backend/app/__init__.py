@@ -8,7 +8,7 @@ from backend.app.core.logging import setup_logging
 from backend.app.core.middleware import RequestIDMiddleware
 from backend.app.core.exceptions import register_exception_handlers
 from backend.app.core.dependencies import get_knowledge_loader, get_policy_loader
-from backend.app.api import health
+from backend.app.api import health, compliance, knowledge
 
 
 @asynccontextmanager
@@ -62,5 +62,7 @@ def create_app() -> FastAPI:
 
     # Register Routers
     app.include_router(health.router)
+    app.include_router(compliance.router)
+    app.include_router(knowledge.router)
 
     return app

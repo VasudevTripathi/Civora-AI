@@ -9,10 +9,12 @@ from backend.app.decision.dependency import DependencyResolver
 from backend.app.decision.eligibility import EligibilityEngine
 from backend.app.decision.workflow import WorkflowEngine
 from backend.app.compliance.engine import ComplianceEngine
+from backend.app.knowledge.repository import KnowledgeRepository
 
 # Global Singletons
 _knowledge_loader = KnowledgeLoader(knowledge_dir=settings.KNOWLEDGE_DIR)
 _policy_loader = PolicyLoader(knowledge_dir=settings.KNOWLEDGE_DIR)
+_knowledge_repository = KnowledgeRepository(knowledge_dir=settings.KNOWLEDGE_DIR)
 
 # Instantiate engines with dependency injection
 _rule_engine = RuleEngine(policy_loader=_policy_loader)
@@ -77,3 +79,8 @@ def get_workflow_engine() -> WorkflowEngine:
 def get_compliance_engine() -> ComplianceEngine:
     """Returns the compliance engine singleton instance."""
     return _compliance_engine
+
+
+def get_knowledge_repository() -> KnowledgeRepository:
+    """Returns the global KnowledgeRepository singleton instance."""
+    return _knowledge_repository
