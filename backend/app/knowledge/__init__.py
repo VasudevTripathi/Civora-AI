@@ -6,6 +6,7 @@ from backend.app.knowledge.pdf_parser import PDFParser, PDFParserError
 from backend.app.knowledge.text_cleaner import TextCleaner
 from backend.app.knowledge.section_extractor import SectionExtractor
 from backend.app.knowledge.normalizer import KnowledgeNormalizer, NormalizationError
+from backend.app.knowledge.orchestrator import KnowledgeIngestionOrchestrator, IngestionResult
 
 __all__ = [
     "KnowledgeObject",
@@ -20,6 +21,8 @@ __all__ = [
     "SectionExtractor",
     "KnowledgeNormalizer",
     "NormalizationError",
+    "KnowledgeIngestionOrchestrator",
+    "IngestionResult",
 ]
 
 
